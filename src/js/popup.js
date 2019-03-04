@@ -1,3 +1,5 @@
+// import { O_RDWR } from "constants";
+
 // import 'sentiment.js'
 
 var articleArray = [];
@@ -11,11 +13,14 @@ window.onload = function () {
         articleArray.push(node.innerText);
     });
    console.log(articleArray.join(", "));
-   $.post("/api/data", articleArray, function() {
+  //  $.post("/api/data", articleArray, function() {
+        
+  // }).then(function(articleData) {
+  //     res.json(articleData);
+  //   });
+ 
 
-  }).then(function(articleData) {
-      res.json(articleData);
-    });
+localStorage.setItem('items', JSON.stringify(articleArray));
 
     // var story = articleArray.join(", ");
     // console.log("Here is the story " + story);

@@ -12,6 +12,9 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Define API routes here
+app.post("/api/data", function(req, res) {
+       res.json(req.body); 
+});
 app.get("/api/data", function(req, res) {
        res.send(); 
 });
