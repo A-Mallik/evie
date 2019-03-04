@@ -15,4 +15,23 @@ window.onload = () => {
       );
     });
   };
+
+  var articleArray = [];
+  // var Sentiment = require('sentiment');
+  // var sentiment = new Sentiment();
+
+      var url = window.location.href;
+      alert("This is the url " + url);
+      var x = document.querySelectorAll("p");
+      x.forEach((node) => {
+          articleArray.push(node.innerText);
+      });
+    console.log(articleArray);
+      // var story = articleArray.join(", ");
+      // console.log("Here is the story " + story);
+  
+  
+
+
+
 }
