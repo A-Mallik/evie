@@ -32,7 +32,15 @@ app.get("/api/data", function(req, res) {
 app.post("/api/data", function(req, res, next) {
   let myData = req.body.action;
   let result = sentiment.analyze(myData.text);
-  console.log(result)
+  
+  let newData = {
+    url: myData.url,
+    score: result.score,
+    title: myData.title,
+    timeVisited: myData.timeVisited
+  }
+
+  console.dir(newData);
   // console.log(JSON.stringify(req.body.action)); // data from the extension
 
   // console.dir(result); //
