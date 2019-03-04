@@ -34,7 +34,7 @@ if (process.env.NODE_ENV === "production") {
 
 // Define API routes here
 app.post("/api/data", function(req, res) {
-    connection.query("INSERT INTO data (body) VALUES (?)", [req.body.body], function(
+    connection.query("INSERT INTO data (body) VALUES (?)", [req.body.body_data], function(
       err,
       result
     ) {

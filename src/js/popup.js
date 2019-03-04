@@ -23,6 +23,10 @@ window.onload = function () {
   //   });
  
 
+
+    // var story = articleArray.join(", ");
+    // console.log("Here is the story " + story);
+}
 localStorage.setItem('items', JSON.stringify(articleArray));
 
 $.ajax({
@@ -30,10 +34,6 @@ $.ajax({
   url: '/api/data',
   data: "yes"
 });
-    // var story = articleArray.join(", ");
-    // console.log("Here is the story " + story);
-}
-
 
 // var story = articleArray.join(", ");
 
