@@ -1,6 +1,8 @@
+import 'sentiment.js'
+
 var articleArray = [];
-var Sentiment = require('sentiment');
-var sentiment = new Sentiment();
+// var Sentiment = require('sentiment');
+// var sentiment = new Sentiment();
 window.onload = function () {
     var url = window.location.href;
     alert("This is the url " + url);
@@ -8,7 +10,7 @@ window.onload = function () {
     x.forEach((node) => {
         articleArray.push(node.innerText);
     });
-   console.log(articleArray[0]);
+   console.log(articleArray);
     // var story = articleArray.join(", ");
     // console.log("Here is the story " + story);
 }
