@@ -10,7 +10,13 @@ window.onload = function () {
     x.forEach((node) => {
         articleArray.push(node.innerText);
     });
-   console.log(articleArray);
+   console.log(articleArray.join(", "));
+   $.post("/api/data", articleArray, function() {
+
+  }).then(function(articleData) {
+      res.json(articleData);
+    });
+
     // var story = articleArray.join(", ");
     // console.log("Here is the story " + story);
 }
