@@ -45,14 +45,12 @@ window.onload = function() {
     timeVisited: currentTimeStamp
   }
 
-  console.table(dataObject)
+  // console.table(articleFullString)
+
   var dataRequest = new XMLHttpRequest();
   dataRequest.open("POST", "http://localhost:3009/api/data", true);
   dataRequest.setRequestHeader("Content-Type", "application/json");
-  dataRequest.send(JSON({ action: articleFullString }));
-  dataRequest.onreadystatechange = function() {
-    if (dataRequest.readyState == 4) {
-      console.log(dataRequest.responseText);
-    }
-  };
+  dataRequest.send(JSON.stringify({ action: dataObject}));
+  dataRequest.onreadystatechange = function () { if (dataRequest.readyState == 4) { console.log(dataRequest.responseText); } }
+    
 };
