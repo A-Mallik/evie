@@ -33,8 +33,34 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Define API routes here
-app.post("/api/data", function(req, res) {
-    connection.query("INSERT INTO data (body) VALUES (?)", [req.body.body_data], function(
+// app.post("/api/data", function(req, res) {
+//     connection.query("INSERT INTO data (body) VALUES (?)", [req.body.body_data], function(
+//       err,
+//       result
+//     ) {
+//       if (err) {
+//         // If an error occurred, send a generic server failure
+//         return res.status(500).end();
+//       }
+  
+//       // Send back the ID of the new quote
+//       res.json({ id: result.insertId });
+//     });
+// });
+
+app.get("/api/data", function(req, res) {
+//     connection.query("SELECT * FROM data;", function(err, data) {
+//       if (err) {
+//         return res.status(500).end();
+//       }
+  
+      res.json(req.body);
+//     });
+  });  
+
+app.post('/api/data', function(req, res, next){
+  console.log(req.body) //Your data from the extension
+      connection.query("INSERT INTO data (body_data) VALUES (?)", [req.body.body_data], function(
       err,
       result
     ) {
@@ -44,19 +70,9 @@ app.post("/api/data", function(req, res) {
       }
   
       // Send back the ID of the new quote
-      res.json({ id: result.insertId });
+      // res.json({ id: result.insertId });
     });
 });
-
-app.get("/data", function(req, res) {
-    connection.query("SELECT * FROM data;", function(err, data) {
-      if (err) {
-        return res.status(500).end();
-      }
-  
-      res.json(data);
-    });
-  });  
 
 // Send every other request to the React app
 // Define any API routes before this runs

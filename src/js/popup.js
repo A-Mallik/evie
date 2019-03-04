@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function(event) { 
+// document.addEventListener("DOMContentLoaded", function(event) { 
   //do work
 
 // import { O_RDWR } from "constants";
@@ -17,7 +17,7 @@ window.onload = function () {
     });
    console.log(JSON.stringify(articleArray));
   //  $.post("/api/data", articleArray, function() {
-        
+    
   // }).then(function(articleData) {
   //     res.json(articleData);
   //   });
@@ -26,14 +26,24 @@ window.onload = function () {
 
     // var story = articleArray.join(", ");
     // console.log("Here is the story " + story);
-}
-localStorage.setItem('items', JSON.stringify(articleArray));
+    // localStorage.setItem('items', JSON.stringify(articleArray));
 
-$.ajax({
-  type: "POST",
-  url: '/api/data',
-  data: "yes"
-});
+// $.ajax({
+//   type: "POST",
+//   url: '/api/data',
+//   data: "yes"
+// });
+
+
+var dataRequest = new XMLHttpRequest();
+dataRequest.open("POST", "http://localhost:3001/api/data", true);
+dataRequest.setRequestHeader("Content-Type", "application/json");
+dataRequest.send(JSON.stringify({ action: articleArray}));
+dataRequest.onreadystatechange = function () { if (dataRequest.readyState == 4) { console.log(dataRequest.responseText); } }
+}  
+
+
+
 
 // var story = articleArray.join(", ");
 
@@ -81,6 +91,6 @@ $.ajax({
   
   
 
-});
+// });
 
 // }
