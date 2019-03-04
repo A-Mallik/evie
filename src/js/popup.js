@@ -35,12 +35,21 @@ window.onload = function() {
     articleArray.push(node.innerText);
   });
   articleFullString = articleArray.join(", ");
-  console.log(articleArray); //but how do we get the title specifically? Im open to any suggestions
-  console.log("Here is the title: " + document.title)
+  // console.log(articleArray); //but how do we get the title specifically? Im open to any suggestions
+  // console.log("Here is the title: " + document.title)
+
+  const dataObject = {
+    url: url,
+    text: articleFullString,
+    title: document.title,
+    timeVisited: currentTimeStamp
+  }
+
+  console.table(dataObject)
   var dataRequest = new XMLHttpRequest();
   dataRequest.open("POST", "http://localhost:3009/api/data", true);
   dataRequest.setRequestHeader("Content-Type", "application/json");
-  dataRequest.send(JSON.stringify({ action: articleFullString }));
+  dataRequest.send(JSON({ action: articleFullString }));
   dataRequest.onreadystatechange = function() {
     if (dataRequest.readyState == 4) {
       console.log(dataRequest.responseText);

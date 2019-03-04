@@ -30,12 +30,13 @@ app.get("/api/data", function(req, res) {
 });
 
 app.post("/api/data", function(req, res, next) {
-  let myData = JSON.stringify(req.body.action);
+  let myData = req.body.action;
+  console.log(myData)
   // console.log(JSON.stringify(req.body.action)); // data from the extension
-  let result = sentiment.analyze(myData);
+  // let result = sentiment.analyze(myData);
   // console.dir(result); //
   // console.log( "This is the score by itself" + result.score);
-  localStorage.setItem("myFirstKey", result.score);
+  // localStorage.setItem("myFirstKey", result.score);
   // console.log(localStorage.getItem('myFirstKey'));
 });
 
