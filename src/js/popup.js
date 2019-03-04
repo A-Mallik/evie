@@ -36,7 +36,7 @@ window.onload = function() {
   });
   articleFullString = articleArray.join(", ");
   console.log(articleArray); //but how do we get the title specifically? Im open to any suggestions
-
+  console.log("Here is the title: " + document.title)
   var dataRequest = new XMLHttpRequest();
   dataRequest.open("POST", "http://localhost:3009/api/data", true);
   dataRequest.setRequestHeader("Content-Type", "application/json");
