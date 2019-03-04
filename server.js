@@ -2,11 +2,20 @@ const express = require("express");
 const path = require("path");
 const PORT = process.env.PORT || 3009;
 const app = express();
-const Sentiment = require('sentiment');
+const Sentiment = require("sentiment");
 const sentiment = new Sentiment();
 
-
-  
+dataObject = (url, sentimentScore, title, timeVisited) => {
+  this.url = url;
+  this.sentimentScore = sentimentScore;
+  this.title = title;
+  this.timeVisited = timeVisited;
+};
+//definition for running localstorage from node-localstorage
+if (typeof localStorage === "undefined" || localStorage === null) {
+  var LocalStorage = require("node-localstorage").LocalStorage;
+  localStorage = new LocalStorage("./scratch");
+}
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -16,45 +25,20 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-// Define API routes here
-// app.post("/api/data", function(req, res) {
-//     connection.query("INSERT INTO data (body) VALUES (?)", [req.body.body_data], function(
-//       err,
-//       result
-//     ) {
-//       if (err) {
-//         // If an error occurred, send a generic server failure
-//         return res.status(500).end();
-//       }
-  
-//       // Send back the ID of the new quote
-//       res.json({ id: result.insertId });
-//     });
-// });
-
 app.get("/api/data", function(req, res) {
-//     connection.query("SELECT * FROM data;", function(err, data) {
-//       if (err) {
-//         return res.status(500).end();
-//       }
-  
-      res.json(req.body);
-//     });
-  });  
-
-app.post('/api/data', function(req, res, next){
-  let myData = JSON.stringify(req.body.action)
-  // console.log(JSON.stringify(req.body.action)); //Your data from the extension
-  
-  let result = sentiment.analyze(myData);
-  console.dir(result);
-  console.log( "This is the score by itself" + result.score);
+  res.json(req.body);
 });
 
+app.post("/api/data", function(req, res, next) {
+  let myData = JSON.stringify(req.body.action);
+  // console.log(JSON.stringify(req.body.action)); // data from the extension
+  let result = sentiment.analyze(myData);
+  // console.dir(result); //
+  // console.log( "This is the score by itself" + result.score);
+  localStorage.setItem("myFirstKey", result.score);
+  // console.log(localStorage.getItem('myFirstKey'));
+});
 
-
-// Send every other request to the React app
-// Define any API routes before this runs
 // app.get("*", (req, res) => {
 //   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 // });
