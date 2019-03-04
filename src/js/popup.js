@@ -1,3 +1,6 @@
+document.addEventListener("DOMContentLoaded", function(event) { 
+  //do work
+
 // import { O_RDWR } from "constants";
 
 // import 'sentiment.js'
@@ -7,12 +10,12 @@ var articleArray = [];
 // var sentiment = new Sentiment();
 window.onload = function () {
     var url = window.location.href;
-    alert("This is the url " + url);
+    // alert("This is the url " + url);
     var x = document.querySelectorAll("p");
     x.forEach((node) => {
         articleArray.push(node.innerText);
     });
-   console.log(articleArray.join(", "));
+   console.log(JSON.stringify(articleArray));
   //  $.post("/api/data", articleArray, function() {
         
   // }).then(function(articleData) {
@@ -22,9 +25,15 @@ window.onload = function () {
 
 localStorage.setItem('items', JSON.stringify(articleArray));
 
+$.ajax({
+  type: "POST",
+  url: '/api/data',
+  data: "yes"
+});
     // var story = articleArray.join(", ");
     // console.log("Here is the story " + story);
 }
+
 
 // var story = articleArray.join(", ");
 
@@ -72,6 +81,6 @@ localStorage.setItem('items', JSON.stringify(articleArray));
   
   
 
-
+});
 
 // }
