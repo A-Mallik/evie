@@ -59,19 +59,12 @@ app.get("/api/data", function(req, res) {
   });  
 
 app.post('/api/data', function(req, res, next){
-  console.log(req.body) //Your data from the extension
-      connection.query("INSERT INTO data (body_data) VALUES (?)", [req.body.body_data], function(
-      err,
-      result
-    ) {
-      if (err) {
-        // If an error occurred, send a generic server failure
-        return res.status(500).end();
-      }
+  console.log(JSON.stringify(req.body.action)); //Your data from the extension
+    
   
       // Send back the ID of the new quote
       // res.json({ id: result.insertId });
-    });
+    
 });
 
 // Send every other request to the React app

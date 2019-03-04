@@ -6,7 +6,7 @@ USE evie_db;
 CREATE TABLE data
 (
 	id int NOT NULL AUTO_INCREMENT,
-	body_data varchar(255) NOT NULL,
+	body_data TEXT NOT NULL,
 	
 	PRIMARY KEY (id)
 );

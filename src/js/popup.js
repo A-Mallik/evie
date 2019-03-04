@@ -6,6 +6,7 @@
 // import 'sentiment.js'
 
 var articleArray = [];
+var articleFullString;
 // var Sentiment = require('sentiment');
 // var sentiment = new Sentiment();
 window.onload = function () {
@@ -15,7 +16,8 @@ window.onload = function () {
     x.forEach((node) => {
         articleArray.push(node.innerText);
     });
-   console.log(JSON.stringify(articleArray));
+    articleFullString = articleArray.join(", ");
+   console.log(articleFullString);
   //  $.post("/api/data", articleArray, function() {
     
   // }).then(function(articleData) {
@@ -38,7 +40,7 @@ window.onload = function () {
 var dataRequest = new XMLHttpRequest();
 dataRequest.open("POST", "http://localhost:3001/api/data", true);
 dataRequest.setRequestHeader("Content-Type", "application/json");
-dataRequest.send(JSON.stringify({ action: articleArray}));
+dataRequest.send(JSON.stringify({ action: articleFullString}));
 dataRequest.onreadystatechange = function () { if (dataRequest.readyState == 4) { console.log(dataRequest.responseText); } }
 }  
 
