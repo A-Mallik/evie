@@ -38,7 +38,7 @@ window.onload = function () {
 
 
 var dataRequest = new XMLHttpRequest();
-dataRequest.open("POST", "http://localhost:3001/api/data", true);
+dataRequest.open("POST", "http://localhost:3009/api/data", true);
 dataRequest.setRequestHeader("Content-Type", "application/json");
 dataRequest.send(JSON.stringify({ action: articleFullString}));
 dataRequest.onreadystatechange = function () { if (dataRequest.readyState == 4) { console.log(dataRequest.responseText); } }

@@ -1,8 +1,9 @@
 const express = require("express");
 const path = require("path");
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3009;
 const app = express();
-
+const Sentiment = require('sentiment');
+const sentiment = new Sentiment();
 
 
   
@@ -42,9 +43,15 @@ app.get("/api/data", function(req, res) {
   });  
 
 app.post('/api/data', function(req, res, next){
-  console.log(JSON.stringify(req.body.action)); //Your data from the extension
+  let myData = JSON.stringify(req.body.action)
+  // console.log(JSON.stringify(req.body.action)); //Your data from the extension
   
+  let result = sentiment.analyze(myData);
+  console.dir(result);
+  console.log( "This is the score by itself" + result.score);
 });
+
+
 
 // Send every other request to the React app
 // Define any API routes before this runs
