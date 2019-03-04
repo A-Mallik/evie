@@ -3,23 +3,6 @@ const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
 
-var mysql = require("mysql");
-
-var connection = mysql.createConnection({
-  host: "localhost",
-  port: 3306,
-  user: "root",
-  password: "password",
-  database: "evie_db"
-});
-
-connection.connect(function(err) {
-    if (err) {
-      console.error("error connecting: " + err.stack);
-      return;
-    }
-    console.log("connected as id " + connection.threadId);
-  });
 
 
   
@@ -60,11 +43,7 @@ app.get("/api/data", function(req, res) {
 
 app.post('/api/data', function(req, res, next){
   console.log(JSON.stringify(req.body.action)); //Your data from the extension
-    
   
-      // Send back the ID of the new quote
-      // res.json({ id: result.insertId });
-    
 });
 
 // Send every other request to the React app
