@@ -4,6 +4,7 @@ const PORT = process.env.PORT || 3009;
 const app = express();
 const Sentiment = require("sentiment");
 const sentiment = new Sentiment();
+const store = require('store')
 
 dataObject = (url, sentimentScore, title, timeVisited) => {
   this.url = url;
@@ -40,7 +41,14 @@ app.post("/api/data", function(req, res, next) {
     timeVisited: myData.timeVisited
   }
 
-  console.dir(newData);
+  console.dir(newData)
+
+  store.set('sentiment', { title: newData.title});
+
+  // localStorage.setItem("title", newData.title);
+  // localStorage.setItem("url", newData.url);
+  // localStorage.setItem("score", newData.score);
+  // localStorage.setItem("timeVisited", newData.timeVisited);
   // console.log(JSON.stringify(req.body.action)); // data from the extension
 
   // console.dir(result); //
