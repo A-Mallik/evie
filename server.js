@@ -41,23 +41,26 @@ app.post("/api/data", function(req, res, next) {
     timeVisited: myData.timeVisited
   }
 
+  res.send(newData)
   // console.dir(newData)
 
-  store.set('sentiment', { title: newData.title});
+  // store.set('sentiment', { title: newData.title});
 
-  localStorage.setItem("title", newData.title);
-  localStorage.setItem("url", newData.url);
-  localStorage.setItem("score", newData.score);
-  localStorage.setItem("timeVisited", newData.timeVisited);
+  // console.log(store.get('sentiment'))
+
+  // localStorage.setItem("title", newData.title);
+  // localStorage.setItem("url", newData.url);
+  // localStorage.setItem("score", newData.score);
+  // localStorage.setItem("timeVisited", newData.timeVisited);
   // console.log(JSON.stringify(req.body.action)); // data from the extension
 
   // console.dir(result); //
   // console.log( "This is the score by itself" + result.score);
   // localStorage.setItem("myFirstKey", result.score);
-  console.log(localStorage.getItem('title'));
-  console.log(localStorage.getItem('url'));
-  console.log(localStorage.getItem('score'));
-  console.log(localStorage.getItem('timeVisited'));
+  // console.log(localStorage.getItem('title'));
+  // console.log(localStorage.getItem('url'));
+  // console.log(localStorage.getItem('score'));
+  // console.log(localStorage.getItem('timeVisited'));
 });
 
 // app.get("*", (req, res) => {
