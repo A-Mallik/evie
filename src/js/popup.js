@@ -47,10 +47,15 @@ window.onload = function() {
 
   // console.table(articleFullString)
 
+  let dataResponse;
+
   var dataRequest = new XMLHttpRequest();
   dataRequest.open("POST", "http://localhost:3009/api/data", true);
   dataRequest.setRequestHeader("Content-Type", "application/json");
   dataRequest.send(JSON.stringify({ action: dataObject}));
-  dataRequest.onreadystatechange = function () { if (dataRequest.readyState == 4) { console.log(dataRequest.responseText); } }
+  dataRequest.onreadystatechange = function () { if (dataRequest.readyState == 4) {
+    dataResponse = JSON.parse(dataRequest.response);
+    console.log(dataResponse);
+   } }
     
 };
