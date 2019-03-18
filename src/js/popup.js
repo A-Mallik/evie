@@ -47,15 +47,20 @@ window.onload = function() {
 
   // console.table(articleFullString)
 
-  let dataResponse;
+  let dataResponse = [];
+  // dataResponse.push(JSON.parse(localStorage.getItem("evi")));
+
+//  oldData = localStorage.getItem("evi")
+//  console.log("Here is the old data:" + oldData)
 
   var dataRequest = new XMLHttpRequest();
   dataRequest.open("POST", "http://localhost:3009/api/data", true);
   dataRequest.setRequestHeader("Content-Type", "application/json");
   dataRequest.send(JSON.stringify({ action: dataObject}));
   dataRequest.onreadystatechange = function () { if (dataRequest.readyState == 4) {
-    dataResponse = JSON.parse(dataRequest.response);
+    dataResponse.push(dataRequest.response);
     console.log(dataResponse);
+    localStorage.setItem("evi", dataResponse);
    } }
     
 };
