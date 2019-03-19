@@ -45,13 +45,11 @@ window.onload = function() {
     timeVisited: currentTimeStamp
   }
 
-  // console.table(articleFullString)
-
   let dataResponse = [];
-  // dataResponse.push(JSON.parse(localStorage.getItem("evi")));
+  let jsonResponse = [];
+  dataResponse.push(localStorage.getItem("evi").split("},"));
 
-//  oldData = localStorage.getItem("evi")
-//  console.log("Here is the old data:" + oldData)
+
 
   var dataRequest = new XMLHttpRequest();
   dataRequest.open("POST", "http://localhost:3009/api/data", true);
