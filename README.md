@@ -11,7 +11,7 @@ https://www.youtube.com/watch?v=yylfHb4sC-Q
 - JavaScript
 - Node JS
 - Express
-- NPM Sentiment
+- NPM Sentiment Analysis
 
 
 ## Authors
